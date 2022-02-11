@@ -17,8 +17,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        /*val view = binding.root
-        setContentView(view)*/
 
         val queue = Volley.newRequestQueue(this)
         getCatsFromServer(queue)
