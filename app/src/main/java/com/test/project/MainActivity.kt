@@ -1,15 +1,18 @@
 package com.test.project
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 
 class MainActivity : AppCompatActivity() {
 
-    /*private lateinit var binding: ResultProfileBinding*/
+    private val url = "https://cat-fact.herokuapp.com/facts"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,37 +20,34 @@ class MainActivity : AppCompatActivity() {
         /*val view = binding.root
         setContentView(view)*/
 
-        setList()
+        val queue = Volley.newRequestQueue(this)
+        getCatsFromServer(queue)
     }
-    
-    private fun setList(){
-        val cats = listOf(
-            "cat1",
-            "cat2",
-            "cat3",
-            "cat4",
-            "cat5",
-            "cat6",
-            "cat7",
-            "cat8",
-            "cat9",
-            "cat10",
-            "cat11",
-            "cat12",
-            "cat13",
-            "cat14",
-            "cat15",
-            "cat16",
-            "cat17",
-            "cat18",
-            "cat19",
-            "cat20"
+
+    private fun getCatsFromServer(queue: RequestQueue){
+        val stringRequest = StringRequest(
+            Request.Method.GET,
+            url,
+            { response ->
+                Toast.makeText(this, response, Toast.LENGTH_SHORT).show()
+            },
+            {
+                Toast.makeText(this,"Loading error", Toast.LENGTH_SHORT).show()
+            }
         )
 
+        queue.add(stringRequest)
+    }
+
+    private fun setList(){
+       /* val cats =*/
+
         val recycler = findViewById<RecyclerView>(R.id.recyclerId)
+/*
 
         val adapter = CatAdapter(cats)
         recycler.adapter = adapter
+*/
 
         val layoutManager = LinearLayoutManager(this)
         recycler.layoutManager = layoutManager
