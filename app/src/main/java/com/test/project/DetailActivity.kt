@@ -76,6 +76,7 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         finish()
+        recreate()
         return true
     }
 

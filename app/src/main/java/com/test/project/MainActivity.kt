@@ -21,7 +21,6 @@ import org.json.JSONArray
 class MainActivity : AppCompatActivity() {
 
     private val url = "https://cat-fact.herokuapp.com/facts"
-    private val urlImg = "https://aws.random.cat/meow"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         favorite.setOnClickListener() {
             val intent = Intent(this@MainActivity, FavoriteActivity::class.java)
             startActivity(intent)
+            recreate()
         }
 
         initRealm()

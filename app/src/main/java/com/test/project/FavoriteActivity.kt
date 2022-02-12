@@ -16,9 +16,6 @@ class FavoriteActivity : AppCompatActivity() {
 
         setupActionBar()
 
-        val tabLayout = findViewById<TabLayout>(R.id.tabLayoutId)
-        tabLayout.setScrollPosition(1, 1F, false)
-
         showListFromDB()
     }
 
